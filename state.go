@@ -22,5 +22,10 @@ func (s *State) read() error {
 }
 
 func (s *State) write() error {
+	data, err := json.Marshal(s)
+	if err != nil {
+		return err
+	}
 
+	return ioutil.WriteFile(path, data, 0700)
 }
