@@ -7,6 +7,24 @@ import (
 	"time"
 )
 
+func help() {
+	fmt.Printf(
+		`Usage: %s [start|stop]
+
+Run %s without any options to get status of the current session
+
+start
+  - Starts pomodoro session(default duration: 25m)
+  - Takes duration of pomodoro session as an optional argument
+
+stop
+  - Stop pomodoro session%s`,
+		os.Args[0],
+		os.Args[0],
+		"\n",
+	)
+}
+
 func run() {
 	if len(os.Args) == 1 {
 		print()
@@ -28,6 +46,9 @@ func run() {
 
 	case "stop":
 		stop()
+
+	case "help":
+		help()
 
 	default:
 		fmt.Println("Invalid argument")
