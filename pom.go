@@ -44,7 +44,25 @@ func start() {
 }
 
 func stop() {
+	var s State
+	if err := s.read(); err != nil {
+		fmt.Println("Pomodoro not running")
+		return
+	}
 
+	if _, running := isRunning(s); !running {
+		fmt.Println("Pomodoro not running")
+		return
+	}
+
+	s = State {
+		Running: false,
+		EndsAt: "",
+	}
+
+	if err := s.write(); err != nil {
+		log.Panic(err)
+	}
 }
 
 func print() {
