@@ -77,5 +77,11 @@ func print() {
 	}
 
 	dur := sTime.Sub(time.Now()).Round(time.Second)
-	fmt.Println(dur)
+
+	if dur < 0 {
+		fmt.Printf("💀%v\n", dur)
+		return
+	}
+
+	fmt.Printf("🍅%v\n", dur)
 }
