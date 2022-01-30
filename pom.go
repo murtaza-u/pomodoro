@@ -48,5 +48,16 @@ func stop() {
 }
 
 func print() {
+	var s State
+	if err := s.read(); err != nil {
+		return
+	}
 
+	sTime, running := isRunning(s)
+	if !running {
+		return
+	}
+
+	dur := sTime.Sub(time.Now()).Round(time.Second)
+	fmt.Println(dur)
 }
