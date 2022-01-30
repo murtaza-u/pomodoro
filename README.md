@@ -25,6 +25,11 @@ $ pom start 45 # starts a 45m pomodoro session
 $ pom stop
 ```
 
+4. Help
+```bash
+$ pom help
+```
+
 ## Add Pomodoro timer to TMUX
 ```bash
 set -g status-interval 1
