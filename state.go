@@ -6,8 +6,8 @@ import (
 )
 
 type State struct {
-	Running string `json:"running"`
-	Ends    string `json:"ends"`
+	Running bool   `json:"running"`
+	EndsAt  string `json:"endsAt"`
 }
 
 const path = "/tmp/pomodoro.json"
