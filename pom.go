@@ -19,10 +19,10 @@ func isRunning(s State) (time.Time, bool) {
 	return endt, true
 }
 
-func start() {
+func start(dur time.Duration) {
 	write := func(s State) {
 		s.Running = true
-		s.EndsAt = time.Now().Add(time.Minute * 25).Format(time.RFC3339)
+		s.EndsAt = time.Now().Add(dur).Format(time.RFC3339)
 		if err := s.write(); err != nil {
 			log.Panic(err)
 		}
@@ -55,9 +55,9 @@ func stop() {
 		return
 	}
 
-	s = State {
+	s = State{
 		Running: false,
-		EndsAt: "",
+		EndsAt:  "",
 	}
 
 	if err := s.write(); err != nil {
