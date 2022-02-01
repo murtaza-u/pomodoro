@@ -25,7 +25,12 @@ $ pom start 45 # starts a 45m pomodoro session
 $ pom stop
 ```
 
-4. Help
+4. Extend pomodoro sesion
+```bash
+$ pom add 10 # adds 10 minutes more to the pomodoro session
+```
+
+5. Help
 ```bash
 $ pom help
 ```
