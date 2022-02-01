@@ -43,6 +43,30 @@ func start(dur time.Duration) {
 	write(s)
 }
 
+func add(dur time.Duration) {
+	var s State
+	if err := s.read(); err != nil {
+		fmt.Println("Pomodoro not running")
+		return
+	}
+
+	endt, running := isRunning(s)
+	if !running {
+		fmt.Println("Pomodoro not running")
+		return
+	}
+
+	if endt.Sub(time.Now()).Round(time.Second) < 0 {
+		s.EndsAt = time.Now().Add(dur).Format(time.RFC3339)
+	} else {
+		s.EndsAt = endt.Add(dur).Format(time.RFC3339)
+	}
+
+	if err := s.write(); err != nil {
+		log.Panic(err)
+	}
+}
+
 func stop() {
 	var s State
 	if err := s.read(); err != nil {
@@ -71,12 +95,12 @@ func print() {
 		return
 	}
 
-	sTime, running := isRunning(s)
+	endt, running := isRunning(s)
 	if !running {
 		return
 	}
 
-	dur := sTime.Sub(time.Now()).Round(time.Second)
+	dur := endt.Sub(time.Now()).Round(time.Second)
 
 	if dur < 0 {
 		fmt.Printf("💀%v\n", dur)
