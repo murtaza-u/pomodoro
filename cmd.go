@@ -9,16 +9,23 @@ import (
 
 func help() {
 	fmt.Printf(
-		`Usage: %s [start|stop]
+		`Usage: %s [start|stop|add|help]
 
 Run %s without any options to get status of the current session
 
 start
   - Starts pomodoro session(default duration: 25m)
-  - Takes duration of pomodoro session as an optional argument
+  - Takes duration(in minutes) of pomodoro session as an optional argument
 
 stop
-  - Stop pomodoro session%s`,
+  - Stop pomodoro session
+
+add [duration(in min)]
+  - Adds additional time to the pomodoro session
+  - Takes duration(in minutes) as a compulsory argument
+
+help
+  - Displays this help information%s`,
 		os.Args[0],
 		os.Args[0],
 		"\n",
