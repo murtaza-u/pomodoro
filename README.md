@@ -6,7 +6,7 @@
 ```bash
 $ git clone https://github.com/Murtaza-Udaipurwala/pomodoro
 $ cd pomodoro
-$ make PREFIX=~/.local install
+$ make PREFIX=~/.local clean install
 ```
 
 # Usage
