@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 	"os"
 	"strconv"
@@ -32,15 +33,18 @@ help
 	)
 }
 
-func getDuration() (int, error) {
+func getDuration(optional bool) (int, error) {
 	dur := 25
 	if len(os.Args) >= 3 {
 		var err error
 		dur, err = strconv.Atoi(os.Args[2])
 		if err != nil {
-			return 0, nil
+			return 0, err
 		}
+	} else if !optional {
+		return 0, errors.New("Duration not provided")
 	}
+
 	return dur, nil
 }
 
@@ -52,7 +56,7 @@ func run() {
 
 	switch os.Args[1] {
 	case "start":
-		dur, err := getDuration()
+		dur, err := getDuration(true)
 		if err != nil {
 			fmt.Println(err)
 			return
@@ -60,7 +64,7 @@ func run() {
 		start(time.Duration(dur * 60 * 1e9))
 
 	case "add":
-		dur, err := getDuration()
+		dur, err := getDuration(false)
 		if err != nil {
 			fmt.Println(err)
 			return
