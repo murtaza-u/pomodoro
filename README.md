@@ -35,6 +35,9 @@ $ pom add 10 # adds 10 minutes more to the pomodoro session
 $ pom help
 ```
 
+6. Bash completion
+Add `complete -C pom pom` in your .bashrc to enable completion
+
 ## Add Pomodoro timer to TMUX
 ```bash
 set -g status-interval 1
