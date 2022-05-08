@@ -1,3 +1,3 @@
-module github.com/murtaza-udaipurwala/pomo
+module github.com/murtaza-u/pomo
 
 go 1.17
