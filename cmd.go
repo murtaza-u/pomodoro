@@ -26,9 +26,11 @@ add [duration(in min)]
   - Takes duration(in minutes) as a compulsory argument
 
 help
-  - Displays this help information
+  - Usage information
 
-Add 'complete -C pom pom' in your .bashrc to enable completion%s`,
+Add 'complete -C %s %s' in your .bashrc to enable completion%s`,
+		os.Args[0],
+		os.Args[0],
 		os.Args[0],
 		os.Args[0],
 		"\n",
