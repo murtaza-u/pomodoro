@@ -27,5 +27,5 @@ func (s *State) write() error {
 		return err
 	}
 
-	return ioutil.WriteFile(path, data, 0700)
+	return ioutil.WriteFile(path, data, 0600)
 }
