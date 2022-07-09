@@ -5,10 +5,14 @@ import (
 	"os"
 )
 
-var commands = []string{"start", "add", "stop", "help"}
+var cmds = []string{"start", "add", "stop", "help"}
 
 func comp() {
-	for _, c := range commands {
+	if os.Args[1] != os.Args[3] {
+		return
+	}
+
+	for _, c := range cmds {
 		if c[0:len(os.Args[2])] == os.Args[2] {
 			fmt.Println(c)
 		}
